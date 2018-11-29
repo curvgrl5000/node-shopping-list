@@ -1,4 +1,3 @@
-
 const express = require('express');
 
 // we'll use morgan to log the HTTP layer
@@ -29,22 +28,21 @@ const ingredients = [
 // so there's some data to look at. Note that 
 // normally you wouldn't do this. Usually your
 // server will simply expose the state of the
-// underlying database.
-ShoppingList.create('beans', 2);
+// underlying database, really its resources!
+
+ShoppingList.create(ingredients[0].main, 2);
 ShoppingList.create('tomatoes', 3);
 ShoppingList.create('peppers', 4);
 
 Recipes.create('mac and cheese', ingredients[0]);
 Recipes.create('freshest trout', ingredients[1]);
-Recipes.create('ziti fresco', ingredients[2]);;
+Recipes.create('ziti fresco', ingredients[2]);
 
 // when the root of this route is called with GET, return
 // all current ShoppingList items by calling `ShoppingList.get()`
 app.get('/shopping-list', (req, res) => {
   res.json(ShoppingList.get());
 });
-
-
 
 app.get('/recipes', (req, res) => {
   res.json(Recipes.get());
