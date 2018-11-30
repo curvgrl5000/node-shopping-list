@@ -41,7 +41,14 @@ Recipes.create('ziti fresco', ingredients[2]);
 // when the root of this route is called with GET, return
 // all current ShoppingList items by calling `ShoppingList.get()`
 app.get('/shopping-list', (req, res) => {
-  res.json(ShoppingList.get());
+
+  // console.log(req); // checkout the request object in console!
+  // console.log(req.route); // checkout the request object in console!
+  // console.log(req.route.path);  // returns the path: /shopping-list
+
+  // res.send(JSON.stringify( ShoppingList.get()) ); // node way
+  res.json(ShoppingList.get()); // express way
+  
 });
 
 app.get('/recipes', (req, res) => {
